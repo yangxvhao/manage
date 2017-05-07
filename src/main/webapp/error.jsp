@@ -8,12 +8,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-		<title>诚安聚立用户中心-错误提示</title>
-	    <link rel="stylesheet" type="text/css" href="<%=resPath%>css/public.css"/>
-	    <link rel="stylesheet" type="text/css" href="<%=resPath%>css/font-awesome.min.css" />
-	    <link rel="stylesheet" type="text/css" href="<%=resPath%>css/style.css" />
-	    <script type="text/javascript" src="<%=resPath %>js/jquery-1.11.3.min.js" ></script>
-	    <script type="text/javascript" src="<%=resPath %>js/common.js" ></script>
+		<title>错误提示</title>
 	</head>
 	<body>
      <!--顶部-->
@@ -26,7 +21,6 @@
 	                    	warning <span>Error</span>
 					    </div>
 					    <div class="loginTishi"><i class="fa fa-bullhorn fa-lg"></i>会话ID:<%=session.getId() %></div>
-						<div class="loginTishi"><i class="fa fa-bullhorn fa-lg"></i>权限验证：<%=session.getAttribute("flag") %></div>
 	                	<h1 class="da-error-heading">很抱歉，出错了！</h1>
 	                    <p><a href="javascript:;">温馨提示：</a></p>
 						<div>
