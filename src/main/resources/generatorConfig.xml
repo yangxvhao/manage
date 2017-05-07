@@ -5,10 +5,10 @@
 
 <generatorConfiguration>
     <!--导入属性配置-->
-    <properties resource="generator.properties"></properties>
+  <!--  <properties resource="generator.properties"></properties>-->
 
     <!--指定特定数据库的jdbc驱动jar包的位置-->
-    <classPathEntry location="${jdbc.driverLocation}"/>
+    <classPathEntry location="C:\\Users\\Administrator\\.m2\\repository\\mysql\\mysql-connector-java\\5.1.36\\mysql-connector-java-5.1.36.jar"/>
 
     <context id="default" targetRuntime="MyBatis3">
 
@@ -20,10 +20,10 @@
 
         <!--jdbc的数据库连接 -->
         <jdbcConnection
-                driverClass="${jdbc.driverClass}"
-                connectionURL="${jdbc.connectionURL}"
-                userId="${jdbc.userId}"
-                password="${jdbc.password}">
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/credit"
+                userId="root"
+                password="123456">
         </jdbcConnection>
 
 
@@ -37,8 +37,8 @@
             targetPackage     指定生成的model生成所在的包名
             targetProject     指定在该项目下所在的路径
         -->
-        <javaModelGenerator targetPackage="model"
-                            targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.credit.model"
+                            targetProject="src/main/java/com/credit">
 
             <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
             <property name="enableSubPackages" value="false"/>
@@ -51,7 +51,7 @@
         </javaModelGenerator>
 
         <!--Mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 -->
-        <sqlMapGenerator targetPackage="mapper"
+        <sqlMapGenerator targetPackage="com.credit.mapper"
                          targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
@@ -61,7 +61,7 @@
                 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
                 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator targetPackage="dao"
+        <javaClientGenerator targetPackage="com.credit.dao"
                              targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>

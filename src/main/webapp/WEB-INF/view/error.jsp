@@ -2,7 +2,6 @@
 <% 
   String path = request.getContextPath();
   String resPath = request.getContextPath()+"/resources/";
-  request.getRequestURI();
 %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -19,17 +18,15 @@
 				<div class="da-error-wrapper">
 	                   	<div class="da-error-pin"></div>
 	                    <div class="da-error-code  firsterror">
-	                    	error <span>404</span>
+	                    	warning <span>Error</span>
 					    </div>
-	                	<h1 class="da-error-heading">很抱歉，您要访问的页面不存在！</h1>
+					    <div class="loginTishi"><i class="fa fa-bullhorn fa-lg"></i>会话ID:<%=session.getId() %></div>
+	                	<h1 class="da-error-heading">很抱歉，出错了！</h1>
 	                    <p><a href="javascript:;">温馨提示：</a></p>
 						<div>
-						<p>1、请检查您访问的网址是否正确</p>
-						<p>2、如果您不能确认访问的网址，请浏览百度更多页面查看更多网址。</p>
-						<p>3、回到顶部重新发起搜索。</p>
-						<p>4、如有任何意见或建议，请及时反馈给我们。</p>
+						<p>${error}</p>
 					   </div>
-					   <p style=" text-align:center;"><a class="on" href="<%=path%>/WEB-INF/view/index.jsp">返回首页</a><a href="javascript:self.close();">关闭本页</a></p>
+					   <p style=" text-align:center;"><a class="on" href="<%=path%>/WEB-INF/view/index.jsp">返回首页</a><a href="javascript:history.go(-1)">返回上一页</a></p>
 	                </div>
 			</div>
      	</div>

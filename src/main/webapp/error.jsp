@@ -26,7 +26,7 @@
 						<div>
 						<p>${error}</p>
 					   </div>
-					   <p style=" text-align:center;"><a class="on" href="<%=path%>/index.jsp">返回首页</a><a href="javascript:history.go(-1)">返回上一页</a></p>
+					   <p style=" text-align:center;"><a class="on" href="/index">返回首页</a><a href="javascript:history.go(-1)">返回上一页</a></p>
 	                </div>
 			</div>
      	</div>
