@@ -1,0 +1,56 @@
+package com.credit.service.impl;
+
+import com.credit.dao.ApplyMapper;
+import com.credit.model.Apply;
+import com.credit.service.IApplyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+
+/**
+ * @date：2017/5/8
+ * @author:yangxvhao
+ */
+@Service
+public class IApplyServiceImpl implements IApplyService {
+
+    @Autowired(required = false)
+    ApplyMapper applyMapper;
+
+    @Override
+    public int deleteByPrimaryKey(String id) {
+        return this.applyMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insert(Apply record) {
+        return this.applyMapper.insert(record);
+    }
+
+    @Override
+    public int insertSelective(Apply record) {
+        return this.applyMapper.insertSelective(record);
+    }
+
+    @Override
+    public Apply selectByPrimaryKey(String id) {
+        return this.applyMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(Apply record) {
+        return this.applyMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int updateByPrimaryKey(Apply record) {
+        return this.applyMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<Object> selectAll() {
+        return this.applyMapper.selectAll();
+    }
+}

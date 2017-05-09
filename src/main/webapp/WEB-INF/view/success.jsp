@@ -17,11 +17,12 @@
 </head>
 <body>
 <table>
-    <tr><span>欢迎<span>${user.name}</span>进入审批管理系统</span></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
+    <tr><td><span>欢迎<span>${user.name}</span>进入审批管理系统</span></td></tr>
+    <tr><td><a href="/changePwd/${user.name}/${user.role}">修改密码</a></td></tr>
+    <tr><td><a href="/apply/manage/${user.name}/${user.role}">申请单管理</a></td></tr>
+    <tr><td><a href="">流程管理</a></td></tr>
+    <tr><td><a href="">退出</a></td></tr>
+
 </table>
 
 </body>

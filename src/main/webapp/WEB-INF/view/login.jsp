@@ -16,18 +16,19 @@
     <title>信贷审批管理系统-登录</title>
 </head>
 <body>
-<h1>已注册，请登录！</h1>
+
 <table>
     <tr><td><span>欢迎进入审批管理系统</span></td></tr>
-    <tr><td><form action="/login" method="post" >
+    <tr><td><span>${change_succes}</span></td></tr>
+    <tr><td><form action="/login" method="post" ><span style="color:red">${error}</span><br/>
         用户名：<input type="text" name="name" path="name"/><br/>
         密  码：<input type="password" name="password" path="password"/><br/>
-        角  色：<input type="radio" name="role" value="0" checked>经理</input>
-        <input type="radio" name="role" value="1">办单员</input><br/>
+        角  色：<input type="radio" name="role" value="经理" checked>经理</input>
+        <input type="radio" name="role" value="办单员">办单员</input><br/>
         <input type="submit" name="登录" value="登录"/>
         <input type="reset" name="重置"/>
     </form></td></tr>
-    <tr><td><a href="/index">注册</a></td> </tr>
+    <tr><td>未注册：<a href="/index">注册</a></td> </tr>
     <tr></tr>
     <tr></tr>
 </table>

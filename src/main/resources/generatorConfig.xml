@@ -38,7 +38,7 @@
             targetProject     指定在该项目下所在的路径
         -->
         <javaModelGenerator targetPackage="com.credit.model"
-                            targetProject="src/main/java/com/credit">
+                            targetProject="src/main/java">
 
             <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
             <property name="enableSubPackages" value="false"/>
@@ -67,17 +67,17 @@
         </javaClientGenerator>
 
 
-        <table tableName="user" domainObjectName="User"
+<!--        <table tableName="user" domainObjectName="User"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>-->
+
+        <table tableName="apply" domainObjectName="Apply"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
 
- <!--       <table tableName="apply" domainObjectName="Apply"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-        -->
     </context>
 </generatorConfiguration>

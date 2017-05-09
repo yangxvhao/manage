@@ -29,7 +29,7 @@
 						<p>3、回到顶部重新发起搜索。</p>
 						<p>4、如有任何意见或建议，请及时反馈给我们。</p>
 					   </div>
-					   <p style=" text-align:center;"><a class="on" href="<%=path%>/WEB-INF/view/index.jsp">返回首页</a><a href="javascript:self.close();">关闭本页</a></p>
+					   <p style=" text-align:center;"><a class="on" href="/index">返回首页</a><a href="javascript:self.close();">关闭本页</a></p>
 	                </div>
 			</div>
      	</div>

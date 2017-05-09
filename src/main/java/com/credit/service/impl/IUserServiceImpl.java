@@ -8,12 +8,14 @@ import com.credit.service.IUserService;
 
 /**
  * @date：06
- * @author:fushuai
+ * @author:yangxvhao
  */
 @Service
 public class IUserServiceImpl implements IUserService {
+
     @Autowired(required = false)
     private UserMapper userMapper;
+
     @Override
     public User getUserById(int userId) {
         return this.userMapper.selectByPrimaryKey(userId);
@@ -27,5 +29,30 @@ public class IUserServiceImpl implements IUserService {
     @Override
     public User getUserByName(String name) {
         return this.userMapper.selectByName(name);
+    }
+
+    @Override
+    public int updateByPrimaryKey(User record) {
+        return this.userMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(User record) {
+        return this.userMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return this.userMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insert(User record) {
+        return this.userMapper.insert(record);
+    }
+
+    @Override
+    public int insertSelective(User record) {
+        return this.insertSelective(record);
     }
 }

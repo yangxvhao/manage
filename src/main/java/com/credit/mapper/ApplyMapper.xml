@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.credit.dao.ApplyMapper">
+  <resultMap id="BaseResultMap" type="com.credit.model.Apply">
+    <constructor>
+      <idArg column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="applyName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="applyAge" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="applyIdcard" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="applyType" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="guarantorName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="applyMember" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="applyDate" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="applyMoney" javaType="java.lang.Double" jdbcType="DOUBLE" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, applyName, applyAge, applyIdcard, applyType, guarantorName, applyMember, applyDate, 
+    applyMoney
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from apply
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from apply
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from apply
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.credit.model.Apply">
+    insert into apply (id, applyName, applyAge, 
+      applyIdcard, applyType, guarantorName, 
+      applyMember, applyDate, applyMoney
+      )
+    values (#{id,jdbcType=VARCHAR}, #{applyname,jdbcType=VARCHAR}, #{applyage,jdbcType=INTEGER}, 
+      #{applyidcard,jdbcType=VARCHAR}, #{applytype,jdbcType=VARCHAR}, #{guarantorname,jdbcType=VARCHAR}, 
+      #{applymember,jdbcType=VARCHAR}, #{applydate,jdbcType=VARCHAR}, #{applymoney,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.credit.model.Apply">
+    insert into apply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="applyname != null">
+        applyName,
+      </if>
+      <if test="applyage != null">
+        applyAge,
+      </if>
+      <if test="applyidcard != null">
+        applyIdcard,
+      </if>
+      <if test="applytype != null">
+        applyType,
+      </if>
+      <if test="guarantorname != null">
+        guarantorName,
+      </if>
+      <if test="applymember != null">
+        applyMember,
+      </if>
+      <if test="applydate != null">
+        applyDate,
+      </if>
+      <if test="applymoney != null">
+        applyMoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="applyname != null">
+        #{applyname,jdbcType=VARCHAR},
+      </if>
+      <if test="applyage != null">
+        #{applyage,jdbcType=INTEGER},
+      </if>
+      <if test="applyidcard != null">
+        #{applyidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="applytype != null">
+        #{applytype,jdbcType=VARCHAR},
+      </if>
+      <if test="guarantorname != null">
+        #{guarantorname,jdbcType=VARCHAR},
+      </if>
+      <if test="applymember != null">
+        #{applymember,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null">
+        #{applydate,jdbcType=VARCHAR},
+      </if>
+      <if test="applymoney != null">
+        #{applymoney,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.credit.model.Apply">
+    update apply
+    <set>
+      <if test="applyname != null">
+        applyName = #{applyname,jdbcType=VARCHAR},
+      </if>
+      <if test="applyage != null">
+        applyAge = #{applyage,jdbcType=INTEGER},
+      </if>
+      <if test="applyidcard != null">
+        applyIdcard = #{applyidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="applytype != null">
+        applyType = #{applytype,jdbcType=VARCHAR},
+      </if>
+      <if test="guarantorname != null">
+        guarantorName = #{guarantorname,jdbcType=VARCHAR},
+      </if>
+      <if test="applymember != null">
+        applyMember = #{applymember,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null">
+        applyDate = #{applydate,jdbcType=VARCHAR},
+      </if>
+      <if test="applymoney != null">
+        applyMoney = #{applymoney,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.credit.model.Apply">
+    update apply
+    set applyName = #{applyname,jdbcType=VARCHAR},
+      applyAge = #{applyage,jdbcType=INTEGER},
+      applyIdcard = #{applyidcard,jdbcType=VARCHAR},
+      applyType = #{applytype,jdbcType=VARCHAR},
+      guarantorName = #{guarantorname,jdbcType=VARCHAR},
+      applyMember = #{applymember,jdbcType=VARCHAR},
+      applyDate = #{applydate,jdbcType=VARCHAR},
+      applyMoney = #{applymoney,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

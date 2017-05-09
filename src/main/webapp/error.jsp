@@ -22,7 +22,7 @@
 					    </div>
 					    <div class="loginTishi"><i class="fa fa-bullhorn fa-lg"></i>会话ID:<%=session.getId() %></div>
 	                	<h1 class="da-error-heading">很抱歉，出错了！</h1>
-	                    <p><a href="javascript:;">温馨提示：</a></p>
+	                    <p>请重试</p>
 						<div>
 						<p>${error}</p>
 					   </div>
