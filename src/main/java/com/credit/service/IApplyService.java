@@ -23,4 +23,9 @@ public interface IApplyService {
     int updateByPrimaryKey(Apply record);
 
     List<Object> selectAll();
+
+    List<Object> selectByApplyMember(String applyMember);
+
+    List<Object> selectByDynamic(String role,String applyMember,String applyType,String applyTimeStart,String applyTimeEnd,
+                                 String applyMoneyMin,String applyMoneyMax);
 }

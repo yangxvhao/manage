@@ -53,4 +53,18 @@ public class IApplyServiceImpl implements IApplyService {
     public List<Object> selectAll() {
         return this.applyMapper.selectAll();
     }
+
+    @Override
+    public List<Object> selectByApplyMember(String applyMember) {
+        return this.applyMapper.selectByApplyMember(applyMember);
+    }
+
+    @Override
+    public List<Object> selectByDynamic(String role,String applyMember,String applyType, String applyTimeStart,
+                                        String applyTimeEnd, String applyMoneyMin, String applyMoneyMax) {
+        return this.applyMapper.selectByDynamic(role,applyMember,applyType,applyTimeStart,
+                applyTimeEnd,applyMoneyMin,applyMoneyMax);
+    }
+
+
 }

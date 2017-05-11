@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.credit.dao.FlowMapper" >
+  <resultMap id="BaseResultMap" type="com.credit.model.Flow" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="applyId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="flowName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="flowScale" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="flowResult" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="flowPrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, applyId, flowName, flowScale, flowResult, flowPrice
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from flow
+  </select>
+  <select id="selectByApplyId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from flow
+    where applyId = #{applyid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByDynamic" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from flow
+    <where>
+      <if test="flowResult!=''">
+        flowResult = #{flowResult,jdbcType=VARCHAR}
+      </if>
+      <if test="applyId!=''">
+        AND  applyId = #{applyId,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from flow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from flow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.credit.model.Flow" >
+    insert into flow (id, applyId, flowName, 
+      flowScale, flowResult, flowPrice
+      )
+    values (#{id,jdbcType=INTEGER}, #{applyid,jdbcType=VARCHAR}, #{flowname,jdbcType=VARCHAR}, 
+      #{flowscale,jdbcType=INTEGER}, #{flowresult,jdbcType=VARCHAR}, #{flowprice,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.credit.model.Flow" >
+    insert into flow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="applyid != null" >
+        applyId,
+      </if>
+      <if test="flowname != null" >
+        flowName,
+      </if>
+      <if test="flowscale != null" >
+        flowScale,
+      </if>
+      <if test="flowresult != null" >
+        flowResult,
+      </if>
+      <if test="flowprice != null" >
+        flowPrice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="applyid != null" >
+        #{applyid,jdbcType=VARCHAR},
+      </if>
+      <if test="flowname != null" >
+        #{flowname,jdbcType=VARCHAR},
+      </if>
+      <if test="flowscale != null" >
+        #{flowscale,jdbcType=INTEGER},
+      </if>
+      <if test="flowresult != null" >
+        #{flowresult,jdbcType=VARCHAR},
+      </if>
+      <if test="flowprice != null" >
+        #{flowprice,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.credit.model.Flow" >
+    update flow
+    <set >
+      <if test="applyid != null" >
+        applyId = #{applyid,jdbcType=VARCHAR},
+      </if>
+      <if test="flowname != null" >
+        flowName = #{flowname,jdbcType=VARCHAR},
+      </if>
+      <if test="flowscale != null" >
+        flowScale = #{flowscale,jdbcType=INTEGER},
+      </if>
+      <if test="flowresult != null" >
+        flowResult = #{flowresult,jdbcType=VARCHAR},
+      </if>
+      <if test="flowprice != null" >
+        flowPrice = #{flowprice,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.credit.model.Flow" >
+    update flow
+    set applyId = #{applyid,jdbcType=VARCHAR},
+      flowName = #{flowname,jdbcType=VARCHAR},
+      flowScale = #{flowscale,jdbcType=INTEGER},
+      flowResult = #{flowresult,jdbcType=VARCHAR},
+      flowPrice = #{flowprice,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

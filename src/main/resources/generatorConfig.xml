@@ -73,7 +73,17 @@
                selectByExampleQueryId="false">
         </table>-->
 
-        <table tableName="apply" domainObjectName="Apply"
+<!--        <table tableName="apply" domainObjectName="Apply"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>-->
+<!--        <table tableName="flow" domainObjectName="Flow"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>-->
+        <table tableName="report" domainObjectName="Report"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

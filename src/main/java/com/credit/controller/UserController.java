@@ -36,7 +36,7 @@ public class UserController {
     public String Index(@ModelAttribute("user") User user,Model model){
         logger.info("---"+user.toString());
         User user1=userService.getUserByName(user.getName());
-        logger.info(user1.toString());
+
         if(user1==null) {
             if (userService.addUser(user) == 1) {
                 return "login";
@@ -44,6 +44,7 @@ public class UserController {
                 return "error";
             }
         }else {
+            logger.info(user1.toString());
             model.addAttribute("error","用户已存在，请登录");
             return "login";
         }
@@ -91,4 +92,17 @@ public class UserController {
             return "change_pwd";
         }
     }
+    @RequestMapping(value = "/root/{name}/{role}",method = RequestMethod.GET)
+    public String Root(@PathVariable("name")String name,
+                       @PathVariable("role")String role,
+                       Model model){
+
+        logger.info("返回主页，姓名：{},角色：{}",name,role);
+        User user=new User();
+        user.setName(name);
+        user.setRole(role);
+        model.addAttribute("user",user);
+        return "success";
+    }
+
 }

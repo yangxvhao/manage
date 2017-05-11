@@ -3,16 +3,16 @@ package com.credit.utils;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.beans.PropertyDescriptor;
-import java.io.InputStream;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -110,5 +110,100 @@ public class ExcelUtils {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public static void writer(String path, String fileName,String fileType,List<String[]> list,String titleRow[]) throws IOException {
+        Workbook wb = null;
+        String excelPath = path+ File.separator+fileName+"."+fileType;
+        File file = new File(excelPath);
+        Sheet sheet =null;
+        //创建工作文档对象
+        if (!file.exists()) {
+            if (fileType.equals("xls")) {
+                wb = new HSSFWorkbook();
+
+            } else if(fileType.equals("xlsx")) {
+
+                wb = new XSSFWorkbook();
+            } else {
+                throw new FileNotFoundException("文件格式不正确");
+            }
+            //创建sheet对象
+            sheet = (Sheet) wb.createSheet("sheet1");
+            OutputStream outputStream = new FileOutputStream(excelPath);
+            wb.write(outputStream);
+            outputStream.flush();
+            outputStream.close();
+
+        } else {
+            if (fileType.equals("xls")) {
+                wb = new HSSFWorkbook();
+
+            } else if(fileType.equals("xlsx")) {
+                wb = new XSSFWorkbook();
+
+            } else {
+                throw new FileNotFoundException("文件格式不正确");
+            }
+        }
+        //创建sheet对象
+        if (sheet==null) {
+            sheet = (Sheet) wb.createSheet("sheet1");
+        }
+
+        //添加表头
+        Row row = sheet.createRow(0);
+        for (int i=0;i<titleRow.length;i++)
+        {
+            Cell cell = row.createCell(i);
+            cell.setCellValue(titleRow[i]);
+        }
+
+//        CellStyle style = wb.createCellStyle(); // 样式对象
+//
+//        style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);// 垂直
+//        style.setAlignment(CellStyle.ALIGN_CENTER);// 水平
+//        style.setWrapText(true);// 指定当单元格内容显示不下时自动换行
+//
+//
+//        Font font = wb.createFont();
+//        font.setBoldweight(Font.BOLDWEIGHT_BOLD);
+//        font.setFontName("宋体");
+//        font.setFontHeight((short) 280);
+//        style.setFont(font);
+//        // 单元格合并
+//        // 四个参数分别是：起始行，起始列，结束行，结束列
+//        sheet.addMergedRegion(new CellRangeAddress(0, 0, 0, 7));
+//        sheet.autoSizeColumn(5200);
+        //添加表内容
+        for (int i=1;i<list.size()+1;i++) {
+            row=sheet.createRow(i);
+            for (int j = 0; j < list.get(i-1).length; j++) {
+                Cell cell=row.createCell(j);
+                cell.setCellValue(list.get(i-1)[j]);
+            }
+        }
+
+        //创建文件流
+        OutputStream stream = new FileOutputStream(excelPath);
+        //写入数据
+        wb.write(stream);
+        //关闭文件流
+        stream.close();
+    }
+
+    public static void main(String[] args) {
+        List<String []> list=new ArrayList<String[]>();
+        String [] titles=new String[]{"标题","iiiiiii","ttttttttttt"};
+        String [] strings=new String[]{"11111111","22222222","33333333"};
+        list.add(strings);
+        String path="E:\\";
+        String fileName="test";
+
+        try {
+            ExcelUtils.writer(path,fileName,"xls",list,titles);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

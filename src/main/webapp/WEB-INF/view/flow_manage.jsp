@@ -14,22 +14,21 @@
 <body>
 <html>
 <head>
-    <title>信贷审批管理系统-申请单管理</title>
+    <title>信贷审批管理系统-流程管理</title>
 </head>
 <body>
 <table>
-    <tr><td><span>欢迎进入审批管理系统</span></td></tr>
+    <tr><td><span>欢迎${name}进入审批管理系统</span></td></tr>
     <tr><td><span>${change_succes}</span></td></tr>
-    <tr><td><span style="color:red">${error}</span><br/>
-        <span>请选择要导入的申请单（只支持.xls文件）</span><br/>
-        <form action="/apply/upload/${name}/${role}" method="post" enctype="multipart/form-data">
+    <tr><td><span style="color:red">${manage_error}</span><br/>
+        <span>请选择要导入的流程单（只支持.xls文件）</span><br/>
+        <form action="/flow/upload/${name}/${role}" method="post" enctype="multipart/form-data">
             请选择文件:<input type="file" name="excelFile"><br/>
             <input type="submit" value="提交">
         </form>
     </td></tr>
-    <tr><td>已导入，<a href="/apply/show/${name}/${role}">申请单展示</a></td></tr>
-    <tr></tr>
-    <tr></tr>
+    <tr><td>已导入，<a href="/flow/show/${name}/${role}">流程展示</a></td></tr>
+
 </table>
 >><a href="/root/${name}/${role}">主页</a>&nbsp;>>
 <a href="javascript:history.go(-1)">返回上一页</a>

@@ -27,6 +27,36 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select * from apply
   </select>
+  <select id="selectByApplyMember" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    <!--<include refid="Base_Column_List" />-->
+    from apply
+    where applyMember = #{applymember,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByDynamic" resultMap="BaseResultMap">
+    select *
+    from apply
+    <where>
+    <if test="role!='经理'">
+       applyMember = #{applyMember,jdbcType=VARCHAR}
+    </if>
+    <if test="applyType!=''">
+      AND applyType = #{applyType,jdbcType=VARCHAR}
+    </if>
+    <if test="applyTimeStart!=''">
+      AND applyDate &gt;= #{applyTimeStart,jdbcType=VARCHAR}
+    </if>
+    <if test="applyTimeEnd!=''">
+      AND applyDate &lt;= #{applyTimeEnd,jdbcType=VARCHAR}
+    </if>
+    <if test="applyMoneyMin!=''">
+      AND applyMoney &gt;= #{applyMoneyMin,jdbcType=DOUBLE}
+    </if>
+    <if test="applyMoneyMax!=''">
+      AND applyMoney &lt;= #{applyMoneyMax,jdbcType=DOUBLE}
+    </if>
+    </where>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from apply
     where id = #{id,jdbcType=VARCHAR}
