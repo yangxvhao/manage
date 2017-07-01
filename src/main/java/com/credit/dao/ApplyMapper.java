@@ -6,7 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ApplyMapper {
-    int deleteByPrimaryKey(String id);
+    int deleteByApplyMember(String applyMember);
+
+    int deleteAll();
 
     int insert(Apply record);
 
@@ -30,5 +32,7 @@ public interface ApplyMapper {
                                  @Param("applyTimeStart")String applyTimeStart,
                                  @Param("applyTimeEnd")String applyTimeEnd,
                                  @Param("applyMoneyMin")String applyMoneyMin,
-                                 @Param("applyMoneyMax")String applyMoneyMax);
+                                 @Param("applyMoneyMax")String applyMoneyMax,
+                                 @Param("status")String status,
+                                 @Param("result")String result);
 }

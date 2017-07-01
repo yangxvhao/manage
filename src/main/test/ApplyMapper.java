@@ -14,9 +14,12 @@ public class ApplyMapper {
     private IApplyService applyMapper;
     @Test
     public void test1(){
-        List<Object> list= this.applyMapper.selectByApplyMember("小红");
+       int count=0;
+        int sum1=4;
+        double sum=0.0;
 
-        System.out.println(list.toString());
+        sum=(count*1.0)/(sum1*1.0);
+        System.out.println(String.valueOf(sum));
     }
 
 }

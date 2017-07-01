@@ -44,6 +44,7 @@ public class ExcelUtils {
             // 得到第一张工作表
             Sheet sheet = wb.getSheetAt(0);
             int i;
+            //有表头跳过第一行
             if (titleExist) {
                 i = 1;
             } else {
@@ -66,6 +67,9 @@ public class ExcelUtils {
                     PropertyDescriptor pd = new PropertyDescriptor(fieldName, beanclass);
                     Method getMethod = pd.getWriteMethod();
                     Cell cell = row.getCell(j++);
+                    if(cell==null){
+                        break;
+                    }
                     if (!cell.equals(null)) {
                         try {
                             int type = cell.getCellType();
@@ -159,22 +163,6 @@ public class ExcelUtils {
             cell.setCellValue(titleRow[i]);
         }
 
-//        CellStyle style = wb.createCellStyle(); // 样式对象
-//
-//        style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);// 垂直
-//        style.setAlignment(CellStyle.ALIGN_CENTER);// 水平
-//        style.setWrapText(true);// 指定当单元格内容显示不下时自动换行
-//
-//
-//        Font font = wb.createFont();
-//        font.setBoldweight(Font.BOLDWEIGHT_BOLD);
-//        font.setFontName("宋体");
-//        font.setFontHeight((short) 280);
-//        style.setFont(font);
-//        // 单元格合并
-//        // 四个参数分别是：起始行，起始列，结束行，结束列
-//        sheet.addMergedRegion(new CellRangeAddress(0, 0, 0, 7));
-//        sheet.autoSizeColumn(5200);
         //添加表内容
         for (int i=1;i<list.size()+1;i++) {
             row=sheet.createRow(i);

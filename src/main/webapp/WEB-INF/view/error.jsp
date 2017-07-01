@@ -3,14 +3,13 @@
   String path = request.getContextPath();
   String resPath = request.getContextPath()+"/resources/";
 %>
-<!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 		<title>错误提示</title>
 	</head>
-	<body>
+	<body bgcolor="#3af7ff">
      <!--顶部-->
      <div class="section">
      	<div class="head-content" style="background-color:#ffffff">

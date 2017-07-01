@@ -8,6 +8,8 @@ import java.util.List;
 public interface FlowMapper {
     int deleteByPrimaryKey(Integer id);
 
+    int deleteAll();
+
     int insert(Flow record);
 
     int insertSelective(Flow record);

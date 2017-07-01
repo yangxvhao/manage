@@ -10,7 +10,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>信贷审批管理系统-流程单展示</title>
+
+    <title>信贷审批管理系统-成本展示</title>
     <script type="text/css">
         *{margin:0;padding:0;}
         #flow {color: red;border: solid;text-align: center;}
@@ -31,6 +32,7 @@
                     <td>>><a href="/apply/manage">申请单管理</a></td>
                     <c:if test="${sessionScope.User.role!='办单员'}">
                         <td >>><a href="/flow/manage">流程管理</a></td>
+                        <td><span style="color:red;font-size:10px">${flow_error}</span></td>
                     </c:if>
                     <c:if test="${sessionScope.User.role!='办单员'}">
                         <td>
@@ -47,60 +49,19 @@
         </td>
     </tr>
     <tr>
-        <td colspan="3">
-            <span>${upload_success}</span>
-            <span style="color:red">${upload_error}</span>
-            <span style="color:red">${show_error}</span>
-            &nbsp;>><a href="/flow/show">流程单展示</a>
-            <form action="/flow/query" method="post">
-                <table >
-                    <tr>
-                        <td>
-                            <span>审批结果：</span><select id="flowResult" name="flowResult">
-                                <option value="">全部</option>
-                                <option value="通过">通过</option>
-                                <option value="未通过">未通过</option>
-                            </select>
-                        </td>
-                        <td>
-                            <span>申请单号：</span><input type="text" name="applyId" size="10"/>
-                        </td>
-                        <td><span>排序：</span><input type="radio" value="1" name="isSort"/>是
-                            <input type="radio" value="0" name="isSort" checked="checked"/>否</td>
-                        <td>
-                            &nbsp;&nbsp;<input type="submit" value="查询"/>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </td>
-        <td align="center">
-            <a href="/flow/delete" style="text-decoration: dashed">清空</a>
-        </td>
-        <td colspan="2">
-            <span style="color: red">${delete_status}</span>
-        </td>
-    </tr>
-    <tr>
-        <td align = "center" width="180px">流程id</td>
+        <td align = "center" width="180px">id</td>
         <td align = "center" width="180px">申请单号</td>
-        <td align = "center" width="180px">流程名称</td>
-        <td align = "center" width="180px">流程权重</td>
-        <td align = "center" width="180px">流程结果</td>
-        <td align = "center" width="180px">流程价格</td>
+        <td align = "center" width="180px">审批成本</td>
     </tr>
     <tr>
-        <td colspan="6"  align="top">
+        <td colspan="3"  align="top">
             <table  border="0" rules="rows"  cellspacing="0" id="idPage" width="100%" >
-                <c:forEach items="${list}" var="flow" varStatus="vs">
+                <c:forEach items="${list}" var="report" varStatus="vs">
                 <tr >
                     <s:property value="#vs.index+1"/>
-                    <td align = "center" width="173px">${flow.id}</td>
-                    <td align = "center"  width="173px">${flow.applyid}</td>
-                    <td align = "center"  width="173px">${flow.flowname}</td>
-                    <td align = "center" width="173px">${flow.flowscale}</td>
-                    <td align = "center" width="173px">${flow.flowresult}</td>
-                    <td align = "center" width="173px">${flow.flowprice}</td>
+                    <td align = "center" width="350px">${report.id}</td>
+                    <td align = "center"  width="350px">${report.applyid}</td>
+                    <td align = "center" width="350px">${report.flowcost}</td>
                 </tr>
                 </c:forEach>
             </table>

@@ -20,8 +20,13 @@ public class IApplyServiceImpl implements IApplyService {
     ApplyMapper applyMapper;
 
     @Override
-    public int deleteByPrimaryKey(String id) {
-        return this.applyMapper.deleteByPrimaryKey(id);
+    public int deleteByApplyMember(String applyMember) {
+        return this.applyMapper.deleteByApplyMember(applyMember);
+    }
+
+    @Override
+    public int deleteAll() {
+        return this.applyMapper.deleteAll();
     }
 
     @Override
@@ -61,9 +66,10 @@ public class IApplyServiceImpl implements IApplyService {
 
     @Override
     public List<Object> selectByDynamic(String role,String applyMember,String applyType, String applyTimeStart,
-                                        String applyTimeEnd, String applyMoneyMin, String applyMoneyMax) {
+                                        String applyTimeEnd, String applyMoneyMin, String applyMoneyMax,String status,
+                                        String result) {
         return this.applyMapper.selectByDynamic(role,applyMember,applyType,applyTimeStart,
-                applyTimeEnd,applyMoneyMin,applyMoneyMax);
+                applyTimeEnd,applyMoneyMin,applyMoneyMax,status,result);
     }
 
 

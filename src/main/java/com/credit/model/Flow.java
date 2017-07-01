@@ -1,5 +1,8 @@
 package com.credit.model;
 
+import lombok.Data;
+
+@Data
 public class Flow implements Comparable<Flow>{
     private Integer id;
 
@@ -24,66 +27,6 @@ public class Flow implements Comparable<Flow>{
 
     public Flow() {
         super();
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getApplyid() {
-        return applyid;
-    }
-
-    public void setApplyid(String applyid) {
-        this.applyid = applyid == null ? null : applyid.trim();
-    }
-
-    public String getFlowname() {
-        return flowname;
-    }
-
-    public void setFlowname(String flowname) {
-        this.flowname = flowname == null ? null : flowname.trim();
-    }
-
-    public Integer getFlowscale() {
-        return flowscale;
-    }
-
-    public void setFlowscale(Integer flowscale) {
-        this.flowscale = flowscale;
-    }
-
-    public String getFlowresult() {
-        return flowresult;
-    }
-
-    public void setFlowresult(String flowresult) {
-        this.flowresult = flowresult == null ? null : flowresult.trim();
-    }
-
-    public Double getFlowprice() {
-        return flowprice;
-    }
-
-    public void setFlowprice(Double flowprice) {
-        this.flowprice = flowprice;
-    }
-
-    @Override
-    public String toString() {
-        return "Flow{" +
-                "id=" + id +
-                ", applyid='" + applyid + '\'' +
-                ", flowname='" + flowname + '\'' +
-                ", flowscale=" + flowscale +
-                ", flowresult='" + flowresult + '\'' +
-                ", flowprice=" + flowprice +
-                '}';
     }
 
     @Override

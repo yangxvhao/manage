@@ -2,6 +2,8 @@ package com.credit.service;
 
 import com.credit.model.User;
 
+import java.util.List;
+
 /**
  * @date：06
  * @author:yangxvhao
@@ -23,4 +25,6 @@ public interface IUserService {
     public int insert(User record);
 
     public int insertSelective(User record);
+
+    List<Object> selectAll();
 }

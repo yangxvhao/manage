@@ -4,17 +4,16 @@
   String resPath = request.getContextPath()+"/resources/";
   request.getRequestURI();
 %>
-<!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 		<title>错误提示</title>
 	</head>
-	<body>
+	<body bgcolor="#3af7ff">
      <!--顶部-->
      <div class="section">
-     	<div class="head-content" style="background-color:#ffffff">
+     	<div class="head-content">
      		<div class="error">
 				<div class="da-error-wrapper">
 	                   	<div class="da-error-pin"></div>
@@ -29,7 +28,7 @@
 						<p>3、回到顶部重新发起搜索。</p>
 						<p>4、如有任何意见或建议，请及时反馈给我们。</p>
 					   </div>
-					   <p style=" text-align:center;"><a class="on" href="/index">返回首页</a><a href="javascript:self.close();">关闭本页</a></p>
+					   <p style=" text-align:center;"><a class="on" href="/root">返回首页</a><a href="javascript:history.go(-1)">返回上一页</a></p>
 	                </div>
 			</div>
      	</div>

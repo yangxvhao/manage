@@ -10,10 +10,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 		<title>错误提示</title>
 	</head>
-	<body>
+	<body bgcolor="#3af7ff">
      <!--顶部-->
      <div class="section">
-     	<div class="head-content" style="background-color:#ffffff">
+     	<div class="head-content">
      		<div class="error">
 				<div class="da-error-wrapper">
 	                   	<div class="da-error-pin"></div>
@@ -26,7 +26,7 @@
 						<div>
 						<p>${error}</p>
 					   </div>
-					   <p style=" text-align:center;"><a class="on" href="/index">返回首页</a><a href="javascript:history.go(-1)">返回上一页</a></p>
+					   <p style=" text-align:center;"><a class="on" href="/root">返回首页</a><a href="javascript:history.go(-1)">返回上一页</a></p>
 	                </div>
 			</div>
      	</div>

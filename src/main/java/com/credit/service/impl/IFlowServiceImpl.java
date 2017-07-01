@@ -23,6 +23,11 @@ public class IFlowServiceImpl implements IFlowService {
     }
 
     @Override
+    public int deleteAll() {
+        return this.flowMapper.deleteAll();
+    }
+
+    @Override
     public int insert(Flow record) {
         return this.flowMapper.insert(record);
     }

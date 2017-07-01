@@ -24,6 +24,9 @@
     from user
     where name = #{name,jdbcType=VARCHAR}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from user
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where id = #{id,jdbcType=INTEGER}

@@ -12,11 +12,14 @@
       <arg column="applyMember" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="applyDate" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="applyMoney" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="result" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="checkMoney" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="status" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
     id, applyName, applyAge, applyIdcard, applyType, guarantorName, applyMember, applyDate, 
-    applyMoney
+    applyMoney,checkMoney,status,result
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -37,7 +40,7 @@
     select *
     from apply
     <where>
-    <if test="role!='经理'">
+    <if test="role=='办单员'">
        applyMember = #{applyMember,jdbcType=VARCHAR}
     </if>
     <if test="applyType!=''">
@@ -55,20 +58,31 @@
     <if test="applyMoneyMax!=''">
       AND applyMoney &lt;= #{applyMoneyMax,jdbcType=DOUBLE}
     </if>
+      <if test="status!=''">
+        AND status=#{status,jdbcType=VARCHAR}
+      </if>
+      <if test="result!=''">
+        AND result=#{result,jdbcType=VARCHAR}
+      </if>
     </where>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByApplyMember" parameterType="java.lang.String">
     delete from apply
-    where id = #{id,jdbcType=VARCHAR}
+    where applyMember = #{applyMember,jdbcType=VARCHAR}
+  </delete>
+
+  <delete id="deleteAll">
+    delete from apply
   </delete>
   <insert id="insert" parameterType="com.credit.model.Apply">
     insert into apply (id, applyName, applyAge, 
       applyIdcard, applyType, guarantorName, 
-      applyMember, applyDate, applyMoney
+      applyMember, applyDate, applyMoney,result,checkMoney,status
       )
     values (#{id,jdbcType=VARCHAR}, #{applyname,jdbcType=VARCHAR}, #{applyage,jdbcType=INTEGER}, 
       #{applyidcard,jdbcType=VARCHAR}, #{applytype,jdbcType=VARCHAR}, #{guarantorname,jdbcType=VARCHAR}, 
-      #{applymember,jdbcType=VARCHAR}, #{applydate,jdbcType=VARCHAR}, #{applymoney,jdbcType=DOUBLE}
+      #{applymember,jdbcType=VARCHAR}, #{applydate,jdbcType=VARCHAR}, #{applymoney,jdbcType=DOUBLE},
+      #{result,jdbcType=VARCHAR}, #{checkmoney,jdbcType=DOUBLE},#{status,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.credit.model.Apply">
@@ -101,6 +115,15 @@
       <if test="applymoney != null">
         applyMoney,
       </if>
+      <if test="result != null">
+        result,
+      </if>
+      <if test="checkmoney != null">
+        checkMoney,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -129,6 +152,15 @@
       </if>
       <if test="applymoney != null">
         #{applymoney,jdbcType=DOUBLE},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="checkmoney != null">
+        #{checkmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -159,6 +191,15 @@
       <if test="applymoney != null">
         applyMoney = #{applymoney,jdbcType=DOUBLE},
       </if>
+      <if test="result != null">
+       result= #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="checkmoney != null">
+       checkMoney= #{checkmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+      status= #{status,jdbcType=VARCHAR},
+    </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -171,7 +212,10 @@
       guarantorName = #{guarantorname,jdbcType=VARCHAR},
       applyMember = #{applymember,jdbcType=VARCHAR},
       applyDate = #{applydate,jdbcType=VARCHAR},
-      applyMoney = #{applymoney,jdbcType=DOUBLE}
+      applyMoney = #{applymoney,jdbcType=DOUBLE},
+      result= #{result,jdbcType=VARCHAR},
+      checkMoney = #{checkmoney,jdbcType=DOUBLE},
+      status=t #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

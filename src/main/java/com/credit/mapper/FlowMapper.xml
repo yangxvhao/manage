@@ -44,6 +44,9 @@
     delete from flow
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteAll">
+    delete from flow
+  </delete>
   <insert id="insert" parameterType="com.credit.model.Flow" >
     insert into flow (id, applyId, flowName, 
       flowScale, flowResult, flowPrice

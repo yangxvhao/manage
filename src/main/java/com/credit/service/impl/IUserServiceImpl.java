@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.credit.service.IUserService;
 
+import java.util.List;
+
 /**
  * @date：06
  * @author:yangxvhao
@@ -55,4 +57,11 @@ public class IUserServiceImpl implements IUserService {
     public int insertSelective(User record) {
         return this.insertSelective(record);
     }
+
+    @Override
+    public List<Object> selectAll() {
+        return this.userMapper.selectAll();
+    }
+
+
 }

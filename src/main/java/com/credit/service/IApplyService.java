@@ -10,7 +10,9 @@ import java.util.List;
  */
 public interface IApplyService {
 
-    int deleteByPrimaryKey(String id);
+    int deleteByApplyMember(String applyMember);
+
+    int deleteAll();
 
     int insert(Apply record);
 
@@ -27,5 +29,5 @@ public interface IApplyService {
     List<Object> selectByApplyMember(String applyMember);
 
     List<Object> selectByDynamic(String role,String applyMember,String applyType,String applyTimeStart,String applyTimeEnd,
-                                 String applyMoneyMin,String applyMoneyMax);
+                                 String applyMoneyMin,String applyMoneyMax,String status,String result);
 }

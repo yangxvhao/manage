@@ -11,6 +11,8 @@ import java.util.List;
 public interface IFlowService {
     int deleteByPrimaryKey(Integer id);
 
+    int deleteAll();
+
     int insert(Flow record);
 
     int insertSelective(Flow record);

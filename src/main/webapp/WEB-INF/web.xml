@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
     xmlns="http://java.sun.com/xml/ns/javaee"  
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"  
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_2.xsd"
     version="3.0">  
     <display-name>Archetype Created Web Application</display-name>  
     <!-- Spring和mybatis的配置文件 -->  
     <context-param>  
         <param-name>contextConfigLocation</param-name>  
         <param-value>classpath:spring-mybatis.xml</param-value>  
-    </context-param>  
+    </context-param>
     <!-- 编码过滤器 -->  
     <filter>  
         <filter-name>encodingFilter</filter-name>  
@@ -31,7 +31,11 @@
     <listener>  
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>  
     </listener>  
-  
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>default</servlet-name>-->
+        <!--<url-pattern>*.jsp</url-pattern>-->
+    <!--</servlet-mapping>-->
     <!-- Spring MVC servlet -->  
     <servlet>  
         <servlet-name>SpringMVC</servlet-name>  
@@ -49,7 +53,7 @@
         <url-pattern>/</url-pattern>  
     </servlet-mapping>  
     <welcome-file-list>  
-        <welcome-file>index</welcome-file>
+        <welcome-file>login</welcome-file>
     </welcome-file-list>
     <error-page>
         <error-code>404</error-code>
@@ -57,6 +61,10 @@
     </error-page>
     <error-page>
         <error-code>500</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>400</error-code>
         <location>/error.jsp</location>
     </error-page>
 </web-app>  
